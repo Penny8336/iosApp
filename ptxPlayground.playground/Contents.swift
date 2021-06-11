@@ -28,53 +28,43 @@ URLSession.shared.dataTask(with: request) { (data, response, error) in
     if let data = data {
         let content = String(data: data, encoding: .utf8) ?? ""
         print(type(of: content))
-        struct User: Codable {
+        
+        
+        struct Loan: Codable {
             var StopUID: String
-            var StopID: String
+            var Zh_tw: String
+            var Direction: Int //0:'去程',1:'返程',2:'迴圈',255:'未知']
+            var EstimateTime: Int
+        
+            enum CodingKeys: String, CodingKey {
+                case StopUID
+                case Zh_tw = "StopName"
+                case Direction
+                case EstimateTime
+            }
+        
+            enum LocationKeys: String, CodingKey {
+                case Zh_tw
+            }
+        
+            init(from decoder: Decoder) throws {
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                let StopName = try values.nestedContainer(keyedBy: LocationKeys.self, forKey: .Zh_tw)
+        
+                Zh_tw = try StopName.decode(String.self, forKey: .Zh_tw)
+        
+                StopUID = try values.decode(String.self, forKey: .StopUID)
+                Direction = try values.decode(Int.self, forKey: .Direction)
+                EstimateTime = try values.decode(Int.self, forKey: .EstimateTime)
+        
+            }
         }
-        
-
-        
+        let decoder = JSONDecoder()
         let jsonData = content.data(using: .utf8)!
-        let users = try! JSONDecoder().decode([User].self, from: jsonData)
+//        let loan = try decoder.decode([Loan].self, from: jsonData)
 
-        for user in users {
-            print(user.StopUID)
-        }
-        
-        
+
     }
 }.resume()
-
-//let json = """
-//{
-//
-//"name": "John Davis",
-//"country": "Peru",
-//"use": "to buy a new collection of clothes to stock her shop before the holidays.",
-//"amount": 150
-//
-//}
-//"""
-//
-//struct Loan: Codable {
-//    var name: String
-//    var country: String
-//    var use: String
-//    var amount: Int
-//}
-//
-//let decoder = JSONDecoder()
-//
-//if let jsonData = json.data(using: .utf8) {
-//
-//    do {
-//        let loan = try decoder.decode(Loan.self, from: jsonData)
-//        print(loan)
-//
-//    } catch {
-//        print(error)
-//    }
-//}
 
 
