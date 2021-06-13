@@ -9,19 +9,29 @@ import UIKit
 
 class ViewController: UIViewController {
 
-
-    @IBOutlet weak var enterBusId: UITextField!
-    @IBOutlet weak var setStart: UITextField!
-    @IBOutlet weak var setEnd: UITextField!
-    @IBOutlet weak var intervalTime: UITextField!
+    var busID = ""
+    @IBOutlet weak var busIdTextField: UITextField!
+    @IBOutlet weak var startTimeTextField: UITextField!
+    @IBOutlet weak var endTimeTextField: UITextField!
+    @IBOutlet weak var intervalTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        print("viewDidLoad")
+
     }
 
 
     @IBAction func saveInfo(_ sender: Any) {
-        print("save")
+        busID = busIdTextField.text!
+        print("saveInfo")
+        performSegue(withIdentifier: "toSecondView", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSecondView"{
+            let destinationVC = segue.destination as! ShowViewController
+            destinationVC.setBusID = busID
+        }
     }
 }
 

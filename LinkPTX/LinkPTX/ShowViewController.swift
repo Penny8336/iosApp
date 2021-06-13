@@ -13,9 +13,14 @@ class ShowViewController: UIViewController {
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
     @IBOutlet weak var intervalTime: UILabel!
+    
+    var setBusID = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("second view")
+        busID.text =  "Bus ID: \(setBusID)"
+        
         // Do any additional setup after loading the view.
     }
     

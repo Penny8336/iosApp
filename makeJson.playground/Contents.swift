@@ -2,36 +2,18 @@ import UIKit
 
 let json = """
 
-[{
-"name": "John Davis",
-"location": {
-"country": "Paraguay",
-},
-"use": "to buy a new collection of clothes to stock her shop before the holidays.",
-"loan_amount": 150
-},
-{
-"name": "Las Margaritas Group",
-"location": {
-"country": "Colombia",
-},
-"use": "to purchase coal in large quantities for resale.",
-"loan_amount": 200
-}]
-
+[{"name":"TPE56992","use":"56992","location":{"country":"忠三街口","En":"Zhongsan St. Entrance"},"RouteUID":"TPE10861","RouteID":"10861","RouteName":{"Zh_tw":"630","En":"630"},"Direction":1,"StopStatus":3,"SrcUpdateTime":"2021-06-12T01:46:10+08:00","UpdateTime":"2021-06-12T01:46:15+08:00"}]
 """
 
 struct Loan: Codable {
     var name: String
     var country: String
     var use: String
-    var amount: Int
 
     enum CodingKeys: String, CodingKey {
         case name
         case country = "location"
         case use
-        case amount = "loan_amount"
     }
 
     enum LocationKeys: String, CodingKey {
@@ -46,7 +28,6 @@ struct Loan: Codable {
         
         name = try values.decode(String.self, forKey: .name)
         use = try values.decode(String.self, forKey: .use)
-        amount = try values.decode(Int.self, forKey: .amount)
 
     }
 }
@@ -60,3 +41,10 @@ for user in loan {
     print(user)
 }
 
+print(json)
+func greet(person: String) {
+    print("Hello, \(person)!")
+
+
+}
+greet(person: json)

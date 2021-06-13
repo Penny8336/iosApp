@@ -41,11 +41,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Mb-vF-DnB">
-                                <rect key="frame" x="189" y="466" width="37" height="30"/>
+                                <rect key="frame" x="163" y="466" width="90" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="SAVE"/>
+                                <state key="normal" title="go to second"/>
                                 <connections>
-                                    <action selector="saveInfo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HRi-NH-UqG"/>
                                     <segue destination="sQC-jJ-hRC" kind="show" id="Odd-n0-1s8"/>
                                 </connections>
                             </button>
@@ -56,16 +55,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynN-pT-h2F">
+                                <rect key="frame" x="192" y="530" width="32" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="save"/>
+                                <connections>
+                                    <action selector="saveInfo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2md-wF-2mm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="usM-18-k4S"/>
                     <connections>
-                        <outlet property="enterBusId" destination="Wkn-kG-kOP" id="R4V-ww-7JY"/>
-                        <outlet property="intervalTime" destination="oFR-Xl-STC" id="t5r-zb-Na8"/>
-                        <outlet property="setEnd" destination="aGa-dS-jKS" id="pp8-zf-BJ3"/>
-                        <outlet property="setStart" destination="gLf-qU-T1D" id="SZ1-cF-xez"/>
+                        <outlet property="busIdTextField" destination="Wkn-kG-kOP" id="cMx-1P-daB"/>
+                        <outlet property="endTimeTextField" destination="aGa-dS-jKS" id="SLf-RH-skr"/>
+                        <outlet property="intervalTextField" destination="oFR-Xl-STC" id="3in-ct-554"/>
+                        <outlet property="startTimeTextField" destination="gLf-qU-T1D" id="u1y-98-INe"/>
+                        <segue destination="sQC-jJ-hRC" kind="show" identifier="toSecondView" id="3As-Ax-4Yr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -168,6 +176,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="3As-Ax-4Yr"/>
         <segue reference="xwk-pW-0Zx"/>
     </inferredMetricsTieBreakers>
     <resources>
