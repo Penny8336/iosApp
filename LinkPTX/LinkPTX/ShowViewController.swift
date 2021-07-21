@@ -69,8 +69,8 @@ func findBusInfo(busID:String) {
     }.resume()
 }
 
-let appId = "a981984e5cae4a34bf47f91567f1a207"
-let appKey = "Zc9QZL0LwVx1RBKwC08ufWxQXFM"
+let appId = "a9...bf47f91567f1a207"
+let appKey = "Zc9QZL0...WxQXFM"
 let xdate = getTimeString()
 let signDate = "x-date: \(xdate)"
 let key = SymmetricKey(data: Data(appKey.utf8))
